@@ -75,12 +75,13 @@ def fetch_jobs(start_date: str, end_date: str) -> List[Dict]:
     }
 
     next_url = None
+    total_expected = None
     while True:
-        try:
-            data = get_job_data_page(params=params, next_url=next_url)
-        except Exception as e:
-            print(f"Error fetching job data: {e}")
-            break
+        # Let errors propagate: swallowing them here wrote a silently
+        # truncated data file (everything after the failed page was lost).
+        data = get_job_data_page(params=params, next_url=next_url)
+        if total_expected is None:
+            total_expected = data.get("paging", {}).get("metadata", {}).get("totalCount")
 
         jobs = data.get("data", [])
         for job in jobs:
@@ -97,6 +98,9 @@ def fetch_jobs(start_date: str, end_date: str) -> List[Dict]:
         else:
             break
 
+    if total_expected is not None and len(all_jobs) != total_expected:
+        raise RuntimeError(
+            f"Fetched {len(all_jobs)} jobs but the API reported totalCount={total_expected}")
     return all_jobs
 
 
