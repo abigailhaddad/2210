@@ -25,3 +25,12 @@ Edit `config.js` to customize displayed fields, filters, and appearance.
 ```
 python3 -m http.server 8000  
 ```
+## Term and Temp Hiring Outcomes
+
+Check whether term and temp announcements are less likely to end in a selection than permanent ones for the same kind of job, using GSA's [Federal Hiring Assessments and Selection Outcome Dataset](https://catalog.data.gov/dataset/federal-hiring-assessments-and-selection-outcome-dataset) (FY2020 through Dec 2023). Downloads the files into `gsa_data/` the first time.
+
+```
+python hiring_outcomes_analysis.py
+```
+
+Note: GSA dropped temporary-only announcements from this dataset, so "temp" here means announcements listing Temporary as one of several appointment types.
