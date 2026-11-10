@@ -30,3 +30,4 @@ urllib3==2.3.0
 pandas
 python-calamine
 pyfixest
+jupyter
