@@ -28,7 +28,7 @@ python3 -m http.server 8000
 
 ## Term and Temp Hiring Outcomes
 
-Check whether term and temp announcements are less likely to end in a selection than permanent ones for the same kind of job, using GSA's [Federal Hiring Assessments and Selection Outcome Dataset](https://catalog.data.gov/dataset/federal-hiring-assessments-and-selection-outcome-dataset) (FY2020 through Dec 2023). Downloads the files into `gsa_data/` the first time.
+Check whether term and temp jobs are less likely to get filled than permanent ones for the same kind of job, using GSA's [Federal Hiring Assessments and Selection Outcome Dataset](https://catalog.data.gov/dataset/federal-hiring-assessments-and-selection-outcome-dataset) (FY2020 through Dec 2023). Downloads the files into `gsa_data/` the first time.
 
 ```
 jupyter notebook hiring_outcomes_analysis.ipynb
